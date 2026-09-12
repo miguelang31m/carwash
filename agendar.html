@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Car Wash La 33 - Agendar cita</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- SPLASH -->
+<div class="cw-splash" id="cwSplash">
+  <div class="cw-splash__wrap">
+    <div class="cw-splash__ring">
+      <svg viewBox="0 0 150 150"><circle cx="75" cy="75" r="65" fill="none" stroke="#4fc3f7" stroke-width="1.5" stroke-dasharray="8 10" opacity=".5"/></svg>
+      <svg class="cw-splash__logo" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4fc3f7" stroke-width="2"/><path d="M10 22 Q20 12 30 22" stroke="#4fc3f7" stroke-width="2" fill="none"/><path d="M12 26 Q20 18 28 26" stroke="#eef6ff" stroke-width="1.5" fill="none" opacity=".6"/></svg>
+    </div>
+    <div class="cw-splash__txt">CAR WASH <b>LA 33</b></div>
+  </div>
+</div>
+
+<div class="cw-client">
+  <div class="cw-client__hero">
+    <svg class="cw-client__logo" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4fc3f7" stroke-width="2"/><path d="M10 22 Q20 12 30 22" stroke="#4fc3f7" stroke-width="2" fill="none"/><path d="M12 26 Q20 18 28 26" stroke="#eef6ff" stroke-width="1.5" fill="none" opacity=".6"/></svg>
+    <div class="cw-client__title">CAR WASH <b style="color:#4fc3f7">LA 33</b></div>
+    <div class="cw-client__sub">Agenda tu cita en segundos</div>
+  </div>
+
+  <!-- PASO 0: registro (solo primera vez en este dispositivo) -->
+  <form class="cw-glass cw-client__card" id="cwStepRegistro">
+    <h3 style="font-family:var(--cw-ff-d);font-size:16px;margin-bottom:16px">¿PRIMERA VEZ AQUÍ?</h3>
+    <div class="cw-field">
+      <label>Nombre completo</label>
+      <div class="cw-field__box"><input type="text" id="cwRegNombre" required></div>
+    </div>
+    <div class="cw-field">
+      <label>Teléfono celular</label>
+      <div class="cw-field__box" style="gap:8px">
+        <span style="background:rgba(255,255,255,.06);border:1px solid var(--cw-glass-brd);border-radius:8px;padding:11px 12px;font-size:13.5px;font-weight:700;color:var(--cw-blue2)">+57</span>
+        <input type="tel" id="cwRegTelefono" required pattern="[0-9]{10}" maxlength="10" placeholder="3001234567" style="padding-left:13px">
+      </div>
+    </div>
+    <button type="submit" class="cw-btn" style="width:100%">GUARDAR Y CONTINUAR</button>
+  </form>
+
+  <!-- PASO 1: saludo + elegir vehículo -->
+  <div class="cw-glass cw-client__card" id="cwStepVehiculo" hidden>
+    <div class="cw-client__greet" id="cwGreet"></div>
+    <div style="display:flex;gap:8px;margin-bottom:18px">
+      <button type="button" class="cw-btn" id="cwTabNueva" style="flex:1">NUEVA CITA</button>
+      <button type="button" class="cw-btn cw-btn--ghost" id="cwTabMisCitas" style="flex:1">MIS CITAS</button>
+    </div>
+    <h3 style="font-family:var(--cw-ff-d);font-size:16px;margin-bottom:16px">¿QUÉ VAS A LAVAR?</h3>
+    <div class="cw-vopt" id="cwVopts">
+      <div class="cw-vopt__it" data-veh="MOTO">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/><path d="M5 17l4-8h4l3 5h3M9 9l2-3h3"/></svg>
+        <span>MOTO</span>
+      </div>
+      <div class="cw-vopt__it" data-veh="CARRO">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 16l1.5-5A2 2 0 016.4 9.5h11.2A2 2 0 0119.5 11L21 16"/><rect x="2" y="16" width="20" height="4" rx="1"/><circle cx="7" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg>
+        <span>CARRO</span>
+      </div>
+      <div class="cw-vopt__it" data-veh="CAMIONETA">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 17l1-6a2 2 0 012-2h7l4 4h4a2 2 0 012 2v2"/><rect x="2" y="17" width="20" height="3" rx="1"/><circle cx="7" cy="21" r="1.5"/><circle cx="17" cy="21" r="1.5"/></svg>
+        <span>CAMIONETA</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASO MIS CITAS -->
+  <div class="cw-glass cw-client__card" id="cwStepMisCitas" hidden>
+    <div style="display:flex;gap:8px;margin-bottom:18px">
+      <button type="button" class="cw-btn cw-btn--ghost" id="cwTabNueva2" style="flex:1">NUEVA CITA</button>
+      <button type="button" class="cw-btn" id="cwTabMisCitas2" style="flex:1">MIS CITAS</button>
+    </div>
+    <h3 style="font-family:var(--cw-ff-d);font-size:16px;margin-bottom:16px">TU HISTORIAL DE CITAS</h3>
+    <div id="cwMisCitasList"></div>
+  </div>
+
+  <!-- PASO 2: elegir servicio -->
+  <div class="cw-glass cw-client__card" id="cwStepServicio" hidden>
+    <h3 style="font-family:var(--cw-ff-d);font-size:16px;margin-bottom:16px">ELIGE TU SERVICIO</h3>
+    <div class="cw-svcopt" id="cwSvcOpts"></div>
+    <button type="button" class="cw-btn cw-btn--ghost" style="width:100%" id="cwBackVeh">← CAMBIAR VEHÍCULO</button>
+  </div>
+
+  <!-- PASO 3: elegir horario -->
+  <div class="cw-glass cw-client__card" id="cwStepHora" hidden>
+    <h3 style="font-family:var(--cw-ff-d);font-size:16px;margin-bottom:16px">ELIGE UN HORARIO (8:00 AM – 7:00 PM)</h3>
+    <div class="cw-slots" id="cwClientSlots" style="margin-bottom:18px"></div>
+    <button type="button" class="cw-btn cw-btn--ghost" style="width:100%" id="cwBackSvc">← CAMBIAR SERVICIO</button>
+  </div>
+
+  <!-- PASO 4: confirmación -->
+  <div class="cw-glass cw-client__card" id="cwStepOk" hidden style="text-align:center">
+    <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#4fc3f7" stroke-width="1.8" style="margin:0 auto 14px"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+    <h3 style="font-family:var(--cw-ff-d);font-size:17px;margin-bottom:8px">¡CITA CONFIRMADA!</h3>
+    <p style="color:var(--cw-txt-dim);font-size:13px;line-height:1.6" id="cwResumen"></p>
+    <button type="button" class="cw-btn" style="width:100%;margin-top:18px" id="cwNuevaCitaBtn">AGENDAR OTRA CITA</button>
+  </div>
+</div>
+
+<script src="js/store.js"></script>
+<script src="js/cliente.js"></script>
+</body>
+</html>

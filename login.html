@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Car Wash La 33 - Ingresar</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- SPLASH -->
+<div class="cw-splash" id="cwSplash">
+  <div class="cw-splash__wrap">
+    <div class="cw-splash__ring">
+      <svg viewBox="0 0 150 150"><circle cx="75" cy="75" r="65" fill="none" stroke="#4fc3f7" stroke-width="1.5" stroke-dasharray="8 10" opacity=".5"/></svg>
+      <svg class="cw-splash__logo" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4fc3f7" stroke-width="2"/><path d="M10 22 Q20 12 30 22" stroke="#4fc3f7" stroke-width="2" fill="none"/><path d="M12 26 Q20 18 28 26" stroke="#eef6ff" stroke-width="1.5" fill="none" opacity=".6"/></svg>
+    </div>
+    <div class="cw-splash__txt">CAR WASH <b>LA 33</b></div>
+  </div>
+</div>
+
+<div class="cw-login">
+  <form class="cw-glass cw-login__card" id="cwLoginForm" autocomplete="on">
+    <svg class="cw-login__logo" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#4fc3f7" stroke-width="2"/><path d="M10 22 Q20 12 30 22" stroke="#4fc3f7" stroke-width="2" fill="none"/><path d="M12 26 Q20 18 28 26" stroke="#eef6ff" stroke-width="1.5" fill="none" opacity=".6"/></svg>
+    <div class="cw-login__title">CAR WASH <b style="color:#4fc3f7">LA 33</b></div>
+    <div class="cw-login__sub">Ingresa a tu panel</div>
+
+    <div class="cw-field">
+      <label for="cwUser">Usuario</label>
+      <div class="cw-field__box">
+        <input type="text" id="cwUser" name="usuario" autocomplete="username" required>
+      </div>
+    </div>
+
+    <div class="cw-field">
+      <label for="cwPass">Contraseña</label>
+      <div class="cw-field__box">
+        <input type="password" id="cwPass" name="password" autocomplete="current-password" required>
+        <svg class="cw-field__eye" id="cwEye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path id="cwEyePath" d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="cw-login__row">
+      <label class="cw-remember">
+        <input type="checkbox" id="cwRemember"> Recordarme
+      </label>
+      <a href="#">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <button type="submit" class="cw-btn">Ingresar</button>
+
+    <div class="cw-login__foot">SOLO ACCESO ADMINISTRADOR - LOS CLIENTES AGENDAN DESDE <a href="agendar.html">EL LINK PÚBLICO</a></div>
+  </form>
+</div>
+
+<script src="js/store.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const splash = document.getElementById('cwSplash');
+  setTimeout(() => splash.classList.add('is-hidden'), 1400);
+
+  /* usuario en mayúscula, password se respeta tal cual (sensible a mayúsc/minúsc) */
+  const user = document.getElementById('cwUser');
+  user.addEventListener('input', () => {
+    const pos = user.selectionStart;
+    user.value = user.value.toUpperCase();
+    user.setSelectionRange(pos, pos);
+  });
+
+  /* recordar usuario en localStorage */
+  const remember = document.getElementById('cwRemember');
+  const saved = localStorage.getItem('cw_user');
+  if (saved) { user.value = saved; remember.checked = true; }
+
+  /* ojito mostrar/ocultar contraseña */
+  const pass = document.getElementById('cwPass');
+  const eye  = document.getElementById('cwEye');
+  const eyePath = document.getElementById('cwEyePath');
+  let visible = false;
+  eye.addEventListener('click', () => {
+    visible = !visible;
+    pass.type = visible ? 'text' : 'password';
+    eyePath.setAttribute('d', visible
+      ? 'M3 3l18 18M10.6 10.6a3 3 0 004.24 4.24M9.9 4.24A11 11 0 0122 12s-1.5 2.6-4.1 4.6M6.1 6.1C3.9 7.6 2 12 2 12s2 3.6 5.1 5.4'
+      : 'M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z');
+  });
+
+  document.getElementById('cwLoginForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (remember.checked) localStorage.setItem('cw_user', user.value);
+    else localStorage.removeItem('cw_user');
+
+    /* este login es EXCLUSIVO del administrador del lavadero */
+    sessionStorage.setItem('cw_auth', 'ADMIN');
+    window.location.href = 'index.html';
+  });
+});
+</script>
+</body>
+</html>
