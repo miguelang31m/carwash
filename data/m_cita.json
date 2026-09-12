@@ -1,0 +1,23 @@
+[
+  {
+    "id_cita": 1,
+    "hora": "09:00",
+    "id_cliente": 1,
+    "id_servicio": 2,
+    "estado": "EN_CURSO"
+  },
+  {
+    "id_cita": 2,
+    "hora": "10:30",
+    "id_cliente": 2,
+    "id_servicio": 3,
+    "estado": "CONFIRMADA"
+  },
+  {
+    "id_cita": 3,
+    "hora": "14:00",
+    "id_cliente": 3,
+    "id_servicio": 1,
+    "estado": "CONFIRMADA"
+  }
+]
