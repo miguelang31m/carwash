@@ -1,0 +1,26 @@
+[
+  {
+    "id_cliente": 1,
+    "nombre": "ANDRÉS RUIZ",
+    "telefono": "3001112233",
+    "vehiculo": "MAZDA 3",
+    "visitas": 12,
+    "ult_visita": "2026-09-11"
+  },
+  {
+    "id_cliente": 2,
+    "nombre": "LAURA GÓMEZ",
+    "telefono": "3015558899",
+    "vehiculo": "CRV",
+    "visitas": 7,
+    "ult_visita": "2026-09-11"
+  },
+  {
+    "id_cliente": 3,
+    "nombre": "JULIÁN ORTIZ",
+    "telefono": "3124440099",
+    "vehiculo": "TWIST 125",
+    "visitas": 3,
+    "ult_visita": "2026-09-11"
+  }
+]
