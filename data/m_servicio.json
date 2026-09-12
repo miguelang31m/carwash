@@ -1,0 +1,8 @@
+[
+  {"id_servicio":1,"nombre":"MOTO SENCILLA","vehiculo":"MOTO","tipo":"SENCILLA","duracion_min":15,"precio":20000,"descripcion":"LAVADO EXTERIOR RÁPIDO: CARROCERÍA, LLANTAS Y LIMPIEZA BÁSICA."},
+  {"id_servicio":2,"nombre":"MOTO FULL","vehiculo":"MOTO","tipo":"FULL","duracion_min":25,"precio":25000,"descripcion":"LAVADO COMPLETO: CARROCERÍA, LLANTAS, CADENA, MOTOR Y BRILLADO."},
+  {"id_servicio":3,"nombre":"CARRO SENCILLA","vehiculo":"CARRO","tipo":"SENCILLA","duracion_min":25,"precio":30000,"descripcion":"LAVADO EXTERIOR: CARROCERÍA, LLANTAS Y VIDRIOS."},
+  {"id_servicio":4,"nombre":"CARRO FULL","vehiculo":"CARRO","tipo":"FULL","duracion_min":40,"precio":40000,"descripcion":"LAVADO COMPLETO EXTERIOR + INTERIOR: ASPIRADO, TABLERO, LLANTAS Y BRILLADO."},
+  {"id_servicio":5,"nombre":"CAMIONETA SENCILLA","vehiculo":"CAMIONETA","tipo":"SENCILLA","duracion_min":35,"precio":40000,"descripcion":"LAVADO EXTERIOR: CARROCERÍA, LLANTAS Y VIDRIOS (VEHÍCULO GRANDE)."},
+  {"id_servicio":6,"nombre":"CAMIONETA FULL","vehiculo":"CAMIONETA","tipo":"FULL","duracion_min":50,"precio":50000,"descripcion":"LAVADO COMPLETO EXTERIOR + INTERIOR: ASPIRADO, TABLERO, LLANTAS Y BRILLADO (VEHÍCULO GRANDE)."}
+]
