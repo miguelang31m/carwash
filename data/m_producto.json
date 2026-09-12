@@ -1,0 +1,26 @@
+[
+  {
+    "cod": "P-01",
+    "nombre": "SHAMPOO AUTOMOTRIZ 5L",
+    "categoria": "QUÍMICOS",
+    "stock": 18
+  },
+  {
+    "cod": "P-02",
+    "nombre": "CERA LÍQUIDA",
+    "categoria": "QUÍMICOS",
+    "stock": 4
+  },
+  {
+    "cod": "P-03",
+    "nombre": "MICROFIBRAS",
+    "categoria": "INSUMOS",
+    "stock": 2
+  },
+  {
+    "cod": "P-04",
+    "nombre": "SILICONA LLANTAS",
+    "categoria": "QUÍMICOS",
+    "stock": 21
+  }
+]
